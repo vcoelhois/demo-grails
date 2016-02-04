@@ -15,7 +15,7 @@
 		<g:message code="customer.status.label" default="Status" />
 		
 	</label>
-	<g:checkBox name="status" value="${customerInstance?.status}" />
+	<g:select name="status" from="${customerInstance.constraints.status.inList}" value="${customerInstance?.status}" valueMessagePrefix="customer.status" noSelection="['': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: customerInstance, field: 'email', 'error')} required">

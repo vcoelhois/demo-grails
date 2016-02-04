@@ -1,6 +1,6 @@
 package demograils
 
-import org.springframework.dao.DataIntegrityViolationException
+//import org.springframework.dao.DataIntegrityViolationException
 
 class CustomerController {
 
@@ -11,8 +11,14 @@ class CustomerController {
     }
 
     def list(Integer max) {
+        def criteria = Customer.createCriteria()
+        def results = criteria.list(){
+            like ("name","Cliente 1%")
+            order ("name", "desc")
+        }
+
         params.max = Math.min(max ?: 10, 100)
-        [customerInstanceList: Customer.list(params), customerInstanceTotal: Customer.count()]
+        [customerInstanceList: results, customerInstanceTotal: Customer.count()]
     }
 
     def create() {
@@ -94,7 +100,7 @@ class CustomerController {
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'customer.label', default: 'Customer'), id])
             redirect(action: "list")
         }
-        catch (DataIntegrityViolationException e) {
+        catch (Exception e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'customer.label', default: 'Customer'), id])
             redirect(action: "show", id: id)
         }

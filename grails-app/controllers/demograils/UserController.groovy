@@ -1,6 +1,6 @@
 package demograils
 
-import org.springframework.dao.DataIntegrityViolationException
+//import org.springframework.dao.DataIntegrityViolationException
 
 class UserController {
 
@@ -21,6 +21,7 @@ class UserController {
 
     def save() {
         def userInstance = new User(params)
+        userInstance.confirmPassword = params.confirmPassword
         if (!userInstance.save(flush: true)) {
             render(view: "create", model: [userInstance: userInstance])
             return
@@ -94,7 +95,8 @@ class UserController {
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
             redirect(action: "list")
         }
-        catch (DataIntegrityViolationException e) {
+        catch (Exception e) {
+            //DataIntegrityViolationException
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
             redirect(action: "show", id: id)
         }

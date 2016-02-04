@@ -40,7 +40,7 @@
 					
 						<td><g:link action="show" id="${customerInstance.id}">${fieldValue(bean: customerInstance, field: "name")}</g:link></td>
 					
-						<td><g:formatBoolean boolean="${customerInstance.status}" /></td>
+						<td>${fieldValue(bean: customerInstance, field: "status")}</td>
 					
 						<td>${fieldValue(bean: customerInstance, field: "email")}</td>
 					

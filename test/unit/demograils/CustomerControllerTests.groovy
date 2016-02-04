@@ -5,8 +5,8 @@ package demograils
 import org.junit.*
 import grails.test.mixin.*
 
-@TestFor(CustomerController)
-@Mock(Customer)
+//@TestFor(CustomerController)
+//@Mock(Customer)
 class CustomerControllerTests {
 
     def populateValidParams(params) {

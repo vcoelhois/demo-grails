@@ -5,8 +5,8 @@ package demograils
 import org.junit.*
 import grails.test.mixin.*
 
-@TestFor(UserController)
-@Mock(User)
+//@TestFor(UserController)
+//@Mock(User)
 class UserControllerTests {
 
     def populateValidParams(params) {

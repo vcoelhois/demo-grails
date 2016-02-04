@@ -36,7 +36,7 @@
 				<li class="fieldcontain">
 					<span id="status-label" class="property-label"><g:message code="customer.status.label" default="Status" /></span>
 					
-						<span class="property-value" aria-labelledby="status-label"><g:formatBoolean boolean="${customerInstance?.status}" /></span>
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${customerInstance}" field="status"/></span>
 					
 				</li>
 				</g:if>
