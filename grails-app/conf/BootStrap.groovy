@@ -1,4 +1,5 @@
 import demograils.Customer
+import demograils.User
 
 class BootStrap {
 
@@ -9,6 +10,31 @@ class BootStrap {
                           status     : "ENABLED",
                           contactName: "Contato ${it}"]).save(failOnError: true)
         }
+
+        (1..5).each {
+            new User([username       : "Username ${it}",
+                      password      : "123456",
+                      confirmPassword : "123456",
+                      email     : "email${it}@test.com",
+                      customer: Customer.get(1)]).save(failOnError: true)
+        }
+
+        (1..5).each {
+            new User([username       : "Username ${it}",
+                      password      : "123456",
+                      confirmPassword : "123456",
+                      email     : "email${it}@test.com",
+                      customer: Customer.get(2)]).save(failOnError: true)
+        }
+
+        (1..5).each {
+            new User([username       : "Username ${it}",
+                      password      : "123456",
+                      confirmPassword : "123456",
+                      email     : "email${it}@test.com",
+                      customer: Customer.get(3)]).save(failOnError: true)
+        }
+
     }
     def destroy = {
     }

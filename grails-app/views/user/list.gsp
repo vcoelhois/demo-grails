@@ -20,6 +20,23 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+
+
+			<g:form action="list" >
+
+					<g:message code="user.username.label" default="Username" />
+
+					<g:textField name="username" value="${params?.username}"/>
+
+					<g:message code="customer.name.label" default="Customer" />
+
+					<g:select id="customer" name="customer.id" from="${demograils.Customer.list()}" optionKey="id" value="${params?.customer?.id}" noSelection="['':'']" />
+
+					<g:submitButton name="search" value="Pesquisar" />
+
+			</g:form>
+
+
 			<table>
 				<thead>
 					<tr>

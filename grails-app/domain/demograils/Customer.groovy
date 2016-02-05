@@ -13,4 +13,9 @@ class Customer {
         email blank: false, nullable: false, unique: true, email: true, maxSize: 99
         contactName nullable: true, maxSize: 99
     }
+
+    @Override
+    String toString() {
+        name
+    }
 }

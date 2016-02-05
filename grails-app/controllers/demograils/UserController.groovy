@@ -12,7 +12,18 @@ class UserController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [userInstanceList: User.list(params), userInstanceTotal: User.count()]
+
+        def criteria = User.createCriteria()
+        def results = criteria.list() {
+            like ("username", "%" + params.username + "%")
+            if (params.customer?.id) {
+                customer {
+                    eq("id", params.customer.id.toLong())
+                }
+            }
+        }
+
+        [userInstanceList: results, userInstanceTotal: User.count()]
     }
 
     def create() {

@@ -13,7 +13,7 @@ class CustomerController {
     def list(Integer max) {
         def criteria = Customer.createCriteria()
         def results = criteria.list(){
-            like ("name","Cliente 1%")
+            like ("name","Cliente%")
             order ("name", "desc")
         }
 
